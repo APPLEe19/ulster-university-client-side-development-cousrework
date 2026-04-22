@@ -61,9 +61,7 @@ Launch the site by opening index.html in a browser
 
 ## 📚 References
 
-- Mozilla Developer Network (MDN Web Docs). HTML, CSS, and JavaScript Guides. Available at: https://developer.mozilla.org/  
-- Duckett, J. (2011). HTML and CSS: Design and Build Websites  
-- Duckett, J. (2014). JavaScript and JQuery: Interactive Front-End Web Development  
+- Mozilla Developer Network (MDN Web Docs). HTML, CSS, and JavaScript Guides. Available at: https://developer.mozilla.org/   
 - W3Schools. Web Development Tutorials. Available at: https://www.w3schools.com/  
 - Google Developers. Web Fundamentals & Responsive Design. Available at: https://developers.google.com/  
 
