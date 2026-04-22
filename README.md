@@ -3,72 +3,70 @@ Client-Side Development Coursework
 A responsive, interactive website created for the Ulster University Client-Side Development module.
 This project demonstrates practical use of HTML, CSS, and JavaScript to build a modern interface with persistent user preferences such as theme selection and cookie consent.
 
-📌 Features
-🌗 Light/Dark Theme Toggle
-Users can switch between light and dark modes.
+🌍 Travel Planner Website
 
-Theme preference is saved using localStorage.
+Ulster University – Client-Side Development Coursework
 
-CSS variables dynamically update the UI based on the selected theme.
+A responsive multi-page travel website that allows users to explore destinations, plan trips, and get in touch. This project applies core principles of modern front-end web development, focusing on usability, accessibility, and responsive design.
 
-🍪 Cookie Consent Banner
-Displays on first visit.
+🚀 Features
+🏠 Homepage – Overview and navigation
+🌍 Destinations Page – Travel locations and information
+📝 Trip Planner – Interactive planning section
+📧 Contact Page – User inquiry form
+ℹ️ About Page – Project details
+📱 Responsive Design – Mobile-friendly layout
+🛠️ Tech Stack
+HTML5 – Semantic structure
+CSS3 – Styling and responsive layouts
+JavaScript – Interactivity and DOM manipulation
 
-Once accepted, the banner is hidden permanently (until storage is cleared).
+📂 Project Structure
+project-root/
+│── index.html
+│── about.html
+│── contact.html
+│── destinations.html
+│── planner.html
+│── style.css
+│── script.js
+│── README.md
+📦 Installation & Setup
 
-Consent is stored using localStorage.
+Clone the repository:
 
-🎨 Modern, Responsive UI
-Clean layout using CSS variables.
+git clone :https://github.com/APPLEe19/ulster-university-client-side-development-cousrework.git
+Open the folder
+Launch the site by opening index.html in a browser
+⚙️ Usage
+Navigate via the menu
+Explore destinations
+Plan trips using the planner page
+Submit the contact form
+🎯 Learning Objectives
+Apply semantic HTML structure
+Implement responsive design using CSS
+Use JavaScript for interactivity
+Organise a multi-page website project
+📚 References
+Mozilla Developer Network (MDN Web Docs). HTML, CSS, and JavaScript Guides. Available at: https://developer.mozilla.org/
+HTML and CSS: Design and Build Websites – Jon Duckett (2011)
+JavaScript and JQuery: Interactive Front-End Web Development – Jon Duckett (2014)
+W3Schools. Web Development Tutorials. Available at: https://www.w3schools.com/
+Google Developers. Web Fundamentals & Responsive Design. Available at: https://developers.google.com/
+🧪 Future Improvements
+Add backend integration for form handling
+Store planner data (local storage/database)
+Improve accessibility (WCAG compliance)
+Enhance UI with animations
+📄 License
 
-Smooth hover animations on navigation links and cards.
+This project is for educational purposes as part of coursework at Ulster University.
 
-Mobile‑friendly design with simplified navigation on smaller screens.
+👤 Author
 
-📁 Project Structure
-Code
-/
-├── index.html        # Main HTML structure
-├── script.js         # Theme toggle + cookie banner logic
-├── style.css         # Styling, themes, layout, animations
-└── README.md         # Documentation
+Karan Thapa
+Keshab hatri
+Dinesh Gaire
 
-🧠 JavaScript Overview
-Theme Handling
-Loads saved theme on page load.
-
-Updates DOM attributes and toggle icon.
-
-Saves user preference:
-
-js
-localStorage.setItem('theme', 'dark');
-Cookie Banner Logic
-Checks if cookies were previously accepted.
-
-Shows or hides banner accordingly.
-
-Saves acceptance:
-
-js
-localStorage.setItem('cookiesAccepted', 'true');
-🚀 Getting Started
-Download or clone the repository.
-
-Open index.html in any modern browser.
-
-Test the theme toggle and cookie banner.
-
-Refresh the page to see persistent settings.
-
-No installation or dependencies required.
-
-🛠 Technologies Used
-HTML5
-
-CSS3 (variables, transitions, responsive design)
-
-JavaScript (ES6)
-
-👥 Contributors
 This project was completed as part of a group assignment for Ulster University.
