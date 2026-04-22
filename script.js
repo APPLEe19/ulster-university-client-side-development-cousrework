@@ -1,32 +1,63 @@
+document.addEventListener("DOMContentLoaded", function () {
 
-const themeToggle = document.querySelector('.toggle-theme');
-const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    const themeToggle = document.querySelector('.toggle-theme');
+    const savedTheme = localStorage.getItem('theme') || 'light';
 
-if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    themeToggle.textContent = '☀️';
-}
+    applyTheme(savedTheme);
 
-themeToggle.addEventListener('click', () => {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        themeToggle.textContent = '🌙';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeToggle.textContent = '☀️';
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeToggle) themeToggle.textContent = '☀️';
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            if (themeToggle) themeToggle.textContent = '🌙';
+        }
     }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+            if (isDark) {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+
+        });
+    }
+
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+
+    function showCookieBanner() {
+        if (cookieBanner) {
+            cookieBanner.style.display = 'block';
+        }
+    }
+
+    function hideCookieBanner() {
+        if (cookieBanner) {
+            cookieBanner.style.display = 'none';
+        }
+    }
+
+    if (cookieBanner) {
+        if (!cookiesAccepted) {
+            showCookieBanner();
+        } else {
+            hideCookieBanner();
+        }
+    }
+
+    window.acceptCookies = function () {
+        hideCookieBanner();
+        localStorage.setItem('cookiesAccepted', 'true');
+    };
+
 });
-
-
-function acceptCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
-}
-
-window.onload = () => {
-    if (!localStorage.getItem('cookiesAccepted')) {
-        document.getElementById('cookie-banner').style.display = 'block';
-    }
-};
