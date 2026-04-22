@@ -31,17 +31,18 @@ HTML5 – Semantic structure
 CSS3 – Styling and responsive layouts
 JavaScript – Interactivity and DOM manipulation
 
-📂 Project Structure
+#📂 Project Structure
 project-root/
 
-│── index.html
-│── about.html
-│── contact.html
-│── destinations.html
-│── planner.html
-│── style.css
-│── script.js
-│── README.md
+-project-root/
+-│── index.html
+-│── about.html
+-│── contact.html
+-│── destinations.html
+-│── planner.html
+-│── style.css
+-│── script.js
+-│── README.md
 
 📦 Installation & Setup
 
