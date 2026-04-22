@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan your trip with VoyageVista">
+    <title>Trip Planner - VoyageVista</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">VoyageVista</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="planner.html">Trip Planner</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="toggle-theme" aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+
+    <main style="max-width: 900px; margin: 40px auto; padding: 20px;">
+        <h1 style="text-align: center; margin-bottom: 40px;">Trip Planner</h1>
+        
+        <form id="tripForm">
+            <div style="display: grid; gap: 25px; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <!-- Left Column -->
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold;">Full Name *</label>
+                    <input type="text" id="fullName" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+
+                    <label style="display: block; margin: 20px 0 8px; font-weight: bold;">Email Address *</label>
+                    <input type="email" id="email" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+
+                    <label style="display: block; margin: 20px 0 8px; font-weight: bold;">Phone Number</label>
+                    <input type="tel" id="phone" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold;">Destination *</label>
+                    <select id="destination" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+                        <option value="">Choose a destination</option>
+                        <option value="Paris">Paris, France</option>
+                        <option value="Machu Picchu">Machu Picchu, Peru</option>
+                        <option value="Taj Mahal">Taj Mahal, India</option>
+                        <option value="Great Wall">Great Wall, China</option>
+                        <option value="Santorini">Santorini, Greece</option>
+                        <option value="Grand Canyon">Grand Canyon, USA</option>
+                        <option value="Kathmandu">Kathmandu, Nepal</option>
+                        <option value="Tokyo">Tokyo, Japan</option>
+                        <option value="Sydney">Sydney Opera House, Australia</option>
+                        <option value="Bora Bora">Bora Bora, French Polynesia</option>
+                        <option value="Pyramids of Giza">Pyramids of Giza, Egypt</option>
+                        <option value="Banff">Banff National Park, Canada</option>
+                        <option value="Petra">Petra, Jordan</option>
+                        <option value="Victoria Falls">Victoria Falls, Zambia/Zimbabwe</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro, Brazil</option>
+                        <option value="Angkor Wat">Angkor Wat, Cambodia</option>
+                        <option value="Blue Lagoon">Iceland - Blue Lagoon</option>
+                    </select>
+
+                    <label style="display: block; margin: 20px 0 8px; font-weight: bold;">Travel Date *</label>
+                    <input type="date" id="travelDate" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+
+                    <label style="display: block; margin: 20px 0 8px; font-weight: bold;">Number of Days *</label>
+                    <input type="number" id="days" min="1" max="30" value="7" required
+                           style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+                </div>
+            </div>
+
+            <!-- Additional Notes -->
+            <div style="margin-top: 25px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: bold;">Additional Notes / Special Requests</label>
+                <textarea id="notes" rows="4" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;"></textarea>
+            </div>
+
+            <!-- Cost Calculator -->
+            <div id="costDisplay" style="margin: 30px 0; padding: 20px; background: #f0f8ff; border-radius: 10px; display: none;">
+                <h3>Estimated Cost</h3>
+                <p id="totalCost" style="font-size: 1.5rem; font-weight: bold; color: #0066cc;"></p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" onclick="calculateCost()"
+                        style="background: #0066cc; color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer; margin-right: 15px;">
+                    Calculate Cost
+                </button>
+               
+                <button type="submit"
+                        style="background: #ff6600; color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer;">
+                    Submit Booking Request
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 VoyageVista - Group Project</p>
+    </footer>
+
+    <script>
+        // Base prices per day for ALL 17 destinations
+        const basePrices = {
+            "Paris": 180,
+            "Machu Picchu": 220,
+            "Taj Mahal": 150,
+            "Great Wall": 160,
+            "Santorini": 200,
+            "Grand Canyon": 170,
+            "Kathmandu": 140,
+            "Tokyo": 190,
+            "Sydney": 210,
+            "Bora Bora": 280,
+            "Pyramids of Giza": 130,
+            "Banff": 195,
+            "Petra": 145,
+            "Victoria Falls": 165,
+            "Rio de Janeiro": 175,
+            "Angkor Wat": 155,
+            "Blue Lagoon": 240
+        };
+
+        function calculateCost() {
+            const days = parseInt(document.getElementById('days').value) || 1;
+            const destination = document.getElementById('destination').value;
+           
+            if (!destination) {
+                alert("Please select a destination first!");
+                return;
+            }
+
+            const basePrice = basePrices[destination] || 150;
+            const total = basePrice * days;
+
+            document.getElementById('totalCost').textContent = `$${total} USD (approx.)`;
+            document.getElementById('costDisplay').style.display = 'block';
+        }
+
+        // Form submission
+        document.getElementById('tripForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('travelDate').value;
+            const days = document.getElementById('days').value;
+
+            if (!name || !email || !destination || !date || !days) {
+                alert("Please fill in all required fields (*)");
+                return;
+            }
+
+            if (!email.includes('@')) {
+                alert("Please enter a valid email address");
+                return;
+            }
+
+            // Save booking to localStorage
+            const bookingData = {
+                name: name,
+                email: email,
+                destination: destination,
+                date: date,
+                days: days,
+                notes: document.getElementById('notes').value.trim(),
+                timestamp: new Date().toLocaleString(),
+                estimatedCost: (basePrices[destination] || 150) * parseInt(days)
+            };
+
+            localStorage.setItem('lastBooking', JSON.stringify(bookingData));
+
+            // Success message
+            alert(`Thank you, ${name}!\n\nYour trip to ${destination} has been submitted successfully.\n\nEstimated cost: $${bookingData.estimatedCost} USD (approx.)\n\nWe will contact you soon!`);
+            
+            // Optional: Reset form after submission
+            // this.reset();
+            // document.getElementById('costDisplay').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
