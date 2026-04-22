@@ -26,16 +26,15 @@
         <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
             <h1 style="text-align: center; margin-bottom: 30px;">Famous Destinations</h1>
            
-            <!-- Search Box -->
+          
             <div style="text-align: center; margin-bottom: 40px;">
                 <input type="text" id="searchInput"
                        placeholder="Search destinations (e.g. Paris, Taj, Machu, Tokyo, Sydney)"
                        style="width: 80%; max-width: 500px; padding: 12px 20px; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 50px;">
             </div>
             
-            <!-- Destinations Grid -->
             <div id="destinationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-                <!-- Cards added by JavaScript -->
+               
             </div>
         </div>
     </main>
@@ -44,7 +43,7 @@
     </footer>
 
     <script>
-        // Destination Data (Single Source of Truth) - Now with 17 destinations
+       
         const destinations = [
             {
                 name: "Paris, France",
@@ -169,7 +168,7 @@
             });
         }
 
-        // Search functionality
+        
         document.getElementById('searchInput').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             const filtered = destinations.filter(dest =>
