@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore famous destinations with VoyageVista">
+    <title>Destinations - VoyageVista</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">VoyageVista</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="planner.html">Trip Planner</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="toggle-theme" aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+    <main style="padding-top: 40px;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h1 style="text-align: center; margin-bottom: 30px;">Famous Destinations</h1>
+           
+            <!-- Search Box -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <input type="text" id="searchInput"
+                       placeholder="Search destinations (e.g. Paris, Taj, Machu, Tokyo, Sydney)"
+                       style="width: 80%; max-width: 500px; padding: 12px 20px; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 50px;">
+            </div>
+            
+            <!-- Destinations Grid -->
+            <div id="destinationsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <!-- Cards added by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 VoyageVista - Group Project</p>
+    </footer>
+
+    <script>
+        // Destination Data (Single Source of Truth) - Now with 17 destinations
+        const destinations = [
+            {
+                name: "Paris, France",
+                value: "Paris",
+                description: "Home of the Eiffel Tower, art museums, and delicious food.",
+                image: "https://thumbs.dreamstime.com/b/view-rooftops-paris-observation-deck-view-rooftops-paris-observation-deck-beautiful-blue-sky-211275171.jpg"
+            },
+            {
+                name: "Machu Picchu, Peru",
+                value: "Machu Picchu",
+                description: "Ancient Incan citadel in the Andes mountains.",
+                image: "https://mapupa.com/wp-content/uploads/2023/06/Machu-Picchu-1.webp"
+            },
+            {
+                name: "Taj Mahal, India",
+                value: "Taj Mahal",
+                description: "Beautiful marble monument built as a symbol of love.",
+                image: "https://h2.gifposter.com/bingImages/TajMahalReflection_1920x1080.jpg"
+            },
+            {
+                name: "Great Wall, China",
+                value: "Great Wall",
+                description: "Ancient wall stretching across northern China.",
+                image: "https://th.bing.com/th/id/R.ad3c97351058149ae7fa5612affc1ec3?rik=vTP0J%2foOuUXbWg&riu=http%3a%2f%2fwww.thehistoryhub.com%2fwp-content%2fuploads%2f2014%2f05%2fGreat-Wall-of-China-Images.jpg&ehk=0LFSHTy5KA7wRJR92rh4DbH%2fChPmffrPKTif4B6oi3s%3d&risl=&pid=ImgRaw&r=0"
+            },
+            {
+                name: "Santorini, Greece",
+                value: "Santorini",
+                description: "White buildings with blue domes overlooking the Aegean Sea.",
+                image: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg"
+            },
+            {
+                name: "Grand Canyon, USA",
+                value: "Grand Canyon",
+                description: "Massive colorful canyon carved by the Colorado River.",
+                image: "https://tse1.mm.bing.net/th/id/OIP.KKLzNMIG5YLaGm5brv5PQgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+            },
+            {
+                name: "Kathmandu, Nepal",
+                value: "Kathmandu",
+                description: "Ancient city filled with temples, stupas, and Himalayan mountain views.",
+                image: "https://www.discoverwalks.com/blog/wp-content/uploads/2023/10/raimond-klavins-59al83zjtf8-unsplash.jpg"
+            },
+            {
+                name: "Tokyo, Japan",
+                value: "Tokyo",
+                description: "A vibrant metropolis blending ultra-modern technology with ancient traditions.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/1280px-Skyscrapers_of_Shinjuku_2009_January.jpg"
+            },
+            {
+                name: "Sydney Opera House, Australia",
+                value: "Sydney",
+                description: "Iconic performing arts center with sail-like architecture on Sydney Harbour.",
+                image: "https://th.bing.com/th/id/R.3f94e4a64b4b8cbdc1b18043e218d389?rik=7DIMKAS0T27H5Q&pid=ImgRaw&r=0"
+            },
+            {
+                name: "Bora Bora, French Polynesia",
+                value: "Bora Bora",
+                description: "Stunning turquoise lagoon surrounded by coral reefs and overwater bungalows.",
+                image: "https://thalasso.intercontinental.com/wp-content/uploads/elementor/thumbs/download-p7fk9nynvd53e873epruonan111frw1hgpij42c7jc.jpg"
+            },
+            {
+                name: "Pyramids of Giza, Egypt",
+                value: "Pyramids of Giza",
+                description: "Ancient wonder of the world and the only surviving structure of the Seven Wonders.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg"
+            },
+            {
+                name: "Banff National Park, Canada",
+                value: "Banff",
+                description: "Stunning turquoise lakes, glaciers, and majestic Rocky Mountains.",
+                image: "https://frugalflyer.ca/wp-content/uploads/2022/06/town-of-banff-alberta-at-night-scaled.jpg"
+            },
+            {
+                name: "Petra, Jordan",
+                value: "Petra",
+                description: "Ancient city carved directly into rose-red cliffs, known as the 'Rose City'.",
+                image: "https://img.fotocommunity.com/felsenstadt-petra-in-jordanien-dc8b633c-5001-4b98-b0be-267034815355.jpg?height=1080"
+            },
+            {
+                name: "Victoria Falls, Zambia/Zimbabwe",
+                value: "Victoria Falls",
+                description: "One of the world's largest and most spectacular waterfalls.",
+                image: "https://wallpapers.com/images/hd/victoria-falls-on-zambezi-river-jghmkkbz82ozatxr.jpg"
+            },
+            {
+                name: "Rio de Janeiro, Brazil",
+                value: "Rio de Janeiro",
+                description: "Famous for Christ the Redeemer, Copacabana Beach, and Carnival.",
+                image: "https://i.pinimg.com/originals/87/5e/07/875e0739ce279301b476fbe5c88fc608.jpg"
+            },
+            {
+                name: "Angkor Wat, Cambodia",
+                value: "Angkor Wat",
+                description: "The largest religious monument in the world, a magnificent Khmer temple complex.",
+                image: "https://th.bing.com/th/id/R.acdc4444919dd4e10bb2007a9241f55e?rik=%2fKQzTm6FaKYo7w&pid=ImgRaw&r=0"
+            },
+            {
+                name: "Iceland - Blue Lagoon",
+                value: "Blue Lagoon",
+                description: "Iconic geothermal spa with milky-blue waters surrounded by volcanic landscapes.",
+                image: "https://guidetoiceland.is/image/352081/x/0/the-ultimate-guide-to-the-blue-lagoon-18.jpg"
+            }
+        ];
+
+        function displayDestinations(filteredDestinations) {
+            const grid = document.getElementById('destinationsGrid');
+            grid.innerHTML = '';
+            filteredDestinations.forEach(dest => {
+                const cardHTML = `
+                    <div class="card" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <img src="${dest.image}" alt="${dest.name}"
+                             style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h3>${dest.name}</h3>
+                            <p style="margin: 10px 0;">${dest.description}</p>
+                            <a href="planner.html" style="color: #0066cc; text-decoration: none;">Plan a Trip Here →</a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filtered = destinations.filter(dest =>
+                dest.name.toLowerCase().includes(searchTerm) ||
+                dest.description.toLowerCase().includes(searchTerm)
+            );
+            displayDestinations(filtered);
+        });
+
+        // Load all destinations on page load
+        window.onload = function() {
+            displayDestinations(destinations);
+        };
+    </script>
+</body>
+</html>
