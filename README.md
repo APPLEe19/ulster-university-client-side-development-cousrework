@@ -1,1 +1,1 @@
-# ulster-university-client-side-development-cousrework
+# ulster-university-client-side-development-coursework
