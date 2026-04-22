@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VoyageVista - Discover famous destinations and plan your dream trip">
+    <title>VoyageVista | Famous Destinations Explorer</title>
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">VoyageVista</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="planner.html">Trip Planner</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="toggle-theme" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+</header>
+
+
+<main>
+
+    <!-- Hero Section -->
+    <section style="height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1920x1080/?travel') no-repeat center center/cover; color: white; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div style="max-width: 700px; padding: 20px;">
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">Welcome to VoyageVista</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 30px;">
+                Discover famous destinations around the world and plan your perfect trip!
+            </p>
+            <a href="planner.html" style="background-color: #ff6600; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 1.1rem;">
+                Start Planning Your Trip
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section style="padding: 60px 20px;">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">
+            Featured Famous Destinations
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
+
+            <div class="card" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <img src="https://thumbs.dreamstime.com/b/view-rooftops-paris-observation-deck-view-rooftops-paris-observation-deck-beautiful-blue-sky-211275171.jpg" alt="Paris" style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 20px;">
+                    <h3>Paris, France</h3>
+                    <p>Home of the Eiffel Tower, great food, and beautiful streets.</p>
+                    <a href="destinations.html">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="card" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <img src="https://mapupa.com/wp-content/uploads/2023/06/Machu-Picchu-1.webp" alt="Machu Picchu" style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 20px;">
+                    <h3>Machu Picchu, Peru</h3>
+                    <p>Ancient Incan ruins high in the mountains.</p>
+                    <a href="destinations.html">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="card" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <img src="https://h2.gifposter.com/bingImages/TajMahalReflection_1920x1080.jpg" alt="Taj Mahal" style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 20px;">
+                    <h3>Taj Mahal, India</h3>
+                    <p>Beautiful white marble monument of love.</p>
+                    <a href="destinations.html">Learn More →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trip Planner CTA -->
+    <section style="background-color: #0066cc; color: white; padding: 60px 20px; text-align: center;">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">Ready to Plan Your Adventure?</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
+            Use our easy Trip Planner to choose dates, calculate costs, and save your plan.
+        </p>
+        <a href="planner.html" style="background-color: white; color: #0066cc; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold;">
+            Go to Trip Planner →
+        </a>
+    </section>
+
+</main>
+
+
+<footer>
+    <p>&copy; 2026 VoyageVista - Group Project</p>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: white; padding: 1rem; text-align: center; display: none;">
+    We use cookies to enhance your experience.
+    <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+
+</body>
+</html>
