@@ -81,7 +81,7 @@ This project is for educational purposes as part of coursework at Ulster Univers
 ## 👤 Author
 
 Karan Thapa  
-Keshab Hatri  
+Keshab Khatri  
 Dinesh Gaire  
 
 This project was completed as part of a group assignment for Ulster University.
