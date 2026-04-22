@@ -9,20 +9,31 @@ Ulster University – Client-Side Development Coursework
 
 A responsive multi-page travel website that allows users to explore destinations, plan trips, and get in touch. This project applies core principles of modern front-end web development, focusing on usability, accessibility, and responsive design.
 
+
 🚀 Features
+
+
 🏠 Homepage – Overview and navigation
+
 🌍 Destinations Page – Travel locations and information
+
 📝 Trip Planner – Interactive planning section
+
 📧 Contact Page – User inquiry form
+
 ℹ️ About Page – Project details
+
 📱 Responsive Design – Mobile-friendly layout
+
 🛠️ Tech Stack
+
 HTML5 – Semantic structure
 CSS3 – Styling and responsive layouts
 JavaScript – Interactivity and DOM manipulation
 
 📂 Project Structure
 project-root/
+
 │── index.html
 │── about.html
 │── contact.html
@@ -31,6 +42,7 @@ project-root/
 │── style.css
 │── script.js
 │── README.md
+
 📦 Installation & Setup
 
 Clone the repository:
